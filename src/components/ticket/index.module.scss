@@ -1,0 +1,90 @@
+.block {
+  background-color: #FFFFFF;
+  border-radius: 10px;
+  margin: 0px 0px 20px 0px;
+
+  &:last-child {
+    margin: 0px 0px 0px 0px;
+  }
+}
+
+.body {
+  padding: 20px 15px;
+  display: flex;
+}
+
+.left {
+  border-right: solid 2px #F3F7FA;
+  padding: 0px 20px 0px 0px;
+  margin: 0px 20px 0px 0px;
+  text-align: center;
+
+  img {
+    max-width: 100%;
+  }
+}
+
+.right {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+}
+
+.btn {
+  color: #fff;
+  background-color: #FF6D00;
+  padding: 20px 25px;
+  border-radius: 10px;
+  cursor: pointer;
+  transition: 0.3s ease;
+  border: 1px solid #fff;
+
+  &:hover {
+    color: #FF6D00;
+    background-color: #fff;
+    border: 1px solid #FF6D00;
+  }
+}
+
+.departure {
+  margin: 0px 15px 0px 0px;
+}
+
+.arrival {}
+
+.departureTime,
+.arrivalTime {
+  font-size: 30px;
+  margin: 0px 0px 12px 0px;
+}
+
+.originName {
+  font-size: 20px;
+  margin: 0px 0px 4px 0px;
+}
+
+.departureDate,
+.arrivalDate {
+  color: #B3B9BA;
+}
+
+.stops {
+  color: #B3B9BA;
+  margin: 0px 15px 0px 0px;
+  text-align: center;
+  font-weight: 500;
+}
+
+.planeLine {
+  display: flex;
+  align-items: center;
+  margin: 5px 0px 0px 0px;
+
+  span {
+    display: block;
+    background-color: #A9B0B2;
+    margin: 0px 5px 0px 0px;
+    width: 150px;
+    height: 1px;
+  }
+}

@@ -1,14 +1,16 @@
 import React, { FC } from 'react'
 import style from './index.module.scss'
-import { TicketsInterface, useGetTicketsQuery } from 'redux/api/ticketsApi'
+import { TicketsInterface, useGetTicketsQuery} from 'redux/api/ticketsApi'
 import { Ticket } from 'components/ticket'
 
 interface TicketsBlockProps {
   selectedTransfers: number[],
+  activeIndexOFCurrency: number,
+  activeIndexOfFiltering: number,
 }
 
-export const TicketsBlock: FC<TicketsBlockProps> = ({ selectedTransfers }) => {
-  const { data, isLoading } = useGetTicketsQuery('');
+export const TicketsBlock: FC<TicketsBlockProps> = ({ selectedTransfers, activeIndexOFCurrency, activeIndexOfFiltering }) => {
+  const { data, isFetching } = useGetTicketsQuery(activeIndexOfFiltering);
 
   function filterTicketsByStops(data: TicketsInterface[], stops: number[]) {
     return data.filter(ticket => stops.includes(ticket.stops));
@@ -19,7 +21,7 @@ export const TicketsBlock: FC<TicketsBlockProps> = ({ selectedTransfers }) => {
   return (
     <section className={style.block}>
       <div className={style.body}>
-        {isLoading
+        {isFetching
           ? <div>Идет загрузка билетов...</div>
           : filteringData
             ? filteringData.map(ticket =>
@@ -34,6 +36,7 @@ export const TicketsBlock: FC<TicketsBlockProps> = ({ selectedTransfers }) => {
                 arrival_date={ticket.arrival_date}
                 arrival_time={ticket.arrival_time}
                 stops={ticket.stops}
+                activeIndexOFCurrency={activeIndexOFCurrency}
               />
             )
             : <div>Упс... кажется что-то пошло не так</div>

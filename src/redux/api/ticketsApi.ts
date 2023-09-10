@@ -14,14 +14,22 @@ export interface TicketsInterface {
   price: number;
 }
 
+interface GetTicketsProps {
+  condition?: string,
+  order?: string,
+}
+
 // Define a service using a base URL and expected endpoints
 export const ticketsApi = createApi({
   reducerPath: 'ticketsApi',
   baseQuery: fetchBaseQuery({ baseUrl: 'https://64de1332825d19d9bfb20329.mockapi.io' }),
   endpoints: (builder) => ({
-    getTickets: builder.query<TicketsInterface[], number | ''>({
-      query: () => `/tickets`,
-    }),
+    getTickets: builder.query<TicketsInterface[], number>({
+      query: (i) => (i === 0
+        ? `/tickets?sortBy=price&order=desc`
+        : i === 1 ? `/tickets?sortBy=price&order=asc`
+          : `/tickets`),
+    })
   }),
 });
 

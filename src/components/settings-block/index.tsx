@@ -1,14 +1,22 @@
-import React, { FC, useState, useEffect } from 'react';
-import style from './index.module.scss';
-import { ButtonGroupComponent } from '../button-group';
-import { Checkbox } from '@mui/material';
+import React, { FC, useState } from 'react'
+import style from './index.module.scss'
+import { ButtonGroupCurrency } from '../button-group-currency'
+import { Checkbox } from '@mui/material'
+import { ButtonGroupFiltering } from 'components/button-group-filtering';
 
 interface SettingsBlockProps {
   selectedTransfers: number[];
   setSelectedTransfers: (newList: number[]) => void;
+  activeIndexOFCurrency: number,
+  setActiveIndexOFCurrency: (newIndex: number) => void,
+  activeIndexOfFiltering: number,
+  setActiveIndexOfFiltering: (newIndex: number) => void,
 }
 
-export const SettingsBlock: FC<SettingsBlockProps> = ({ selectedTransfers, setSelectedTransfers }) => {
+export const SettingsBlock: FC<SettingsBlockProps> = (
+  { selectedTransfers, setSelectedTransfers,
+    activeIndexOFCurrency, setActiveIndexOFCurrency,
+    activeIndexOfFiltering, setActiveIndexOfFiltering }) => {
   const [selectAll, setSelectAll] = useState(true); // Начальное состояние "Все" - выбрано
 
   // Обработчик для кнопки "Все"
@@ -39,7 +47,18 @@ export const SettingsBlock: FC<SettingsBlockProps> = ({ selectedTransfers, setSe
     <div className={style.block}>
       <div className={style.body}>
         <div className={style.title}>Валюта</div>
-        <div className={style.buttons}><ButtonGroupComponent /></div>
+        <div className={style.buttons}>
+          <ButtonGroupCurrency
+            activeIndexOFCurrency={activeIndexOFCurrency}
+            setActiveIndexOFCurrency={setActiveIndexOFCurrency}
+          />
+        </div>
+        <div className={style.buttons}>
+          <ButtonGroupFiltering
+            activeIndexOfFiltering={activeIndexOfFiltering}
+            setActiveIndexOfFiltering={setActiveIndexOfFiltering}
+          />
+        </div>
         <div className={style.title}>Количество пересадок</div>
         <div className={style.transfers}>
           <div className={style.transfer}>

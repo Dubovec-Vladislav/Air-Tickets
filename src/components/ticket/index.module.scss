@@ -38,6 +38,8 @@
   cursor: pointer;
   transition: 0.3s ease;
   border: 1px solid #fff;
+  font-weight: 500;
+  line-height: 120%;
 
   &:hover {
     color: #FF6D00;
@@ -48,9 +50,12 @@
 
 .departure {
   margin: 0px 15px 0px 0px;
+  flex: 1 1 33.3%;
 }
 
-.arrival {}
+.arrival {
+  flex: 1 1 33.3%;
+}
 
 .departureTime,
 .arrivalTime {
@@ -69,6 +74,7 @@
 }
 
 .stops {
+  flex: 1 1 33.3%;
   color: #B3B9BA;
   margin: 0px 15px 0px 0px;
   text-align: center;
@@ -78,6 +84,7 @@
 .planeLine {
   display: flex;
   align-items: center;
+  justify-content: center;
   margin: 5px 0px 0px 0px;
 
   span {
